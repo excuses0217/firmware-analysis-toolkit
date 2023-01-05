@@ -9,20 +9,20 @@ then
     sudo apt install -y lsb-core
 fi
 
-# echo "Installing binwalk"
-# git clone --depth=1 https://github.com/ReFirmLabs/binwalk.git
-# cd binwalk
+echo "Installing binwalk"
+# git clone --depth=1 https://github.com/BloodyOrangeMan/binwalk.git
+cd binwalk
 
-# # Temporary fix for sasquatch failing to install (From https://github.com/ReFirmLabs/binwalk/pull/601)
-# sed -i 's;\$SUDO ./build.sh;wget https://github.com/devttys0/sasquatch/pull/47.patch \&\& patch -p1 < 47.patch \&\& \$SUDO ./build.sh;' deps.sh
+# Temporary fix for sasquatch failing to install (From https://github.com/ReFirmLabs/binwalk/pull/601)
+sed -i 's;\$SUDO ./build.sh;wget https://github.com/devttys0/sasquatch/pull/47.patch \&\& patch -p1 < 47.patch \&\& \$SUDO ./build.sh;' deps.sh
 
-# # Change to python3 in deps.sh to allow installation on Ubuntu 20.04 (binwalk commit 2b78673)
-# sed -i '/REQUIRED_UTILS="wget tar python"/c\REQUIRED_UTILS="wget tar python3"' deps.sh
-# sudo ./deps.sh --yes
-# sudo python3 ./setup.py install
-# sudo -H pip3 install git+https://github.com/ahupp/python-magic
-# sudo -H pip3 install git+https://github.com/sviehb/jefferson
-# cd ..
+# Change to python3 in deps.sh to allow installation on Ubuntu 20.04 (binwalk commit 2b78673)
+sed -i '/REQUIRED_UTILS="wget tar python"/c\REQUIRED_UTILS="wget tar python3"' deps.sh
+sudo ./deps.sh --yes
+sudo python3 ./setup.py install
+sudo -H pip3 install git+https://github.com/ahupp/python-magic
+sudo -H pip3 install git+https://github.com/sviehb/jefferson
+cd ..
 
 echo "Installing firmadyne"
 # tested with firmadyne commit bcd8bc0
